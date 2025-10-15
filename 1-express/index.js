@@ -6,6 +6,7 @@ import cors from "cors";
 import multer from "multer";
 import { GoogleGenAI } from "@google/genai";
 
+import 'dotenv/config'; // untuk membaca file .env
 // inisialisasi app
 //
 // deklasrasi variable di JavaScript
@@ -23,6 +24,8 @@ const ai = new GoogleGenAI({ }); // instantion menjadi object intance (oop -- ob
 // contoh penggunaan middleware
 
 app.use(cors()); //inisiasi cors  sebagai middleware
+app.use(express.json()); // untuk parsing json
+
 
 // inisialisasi routing
 // contoh routing: app.get, app.post, app.put, dll
@@ -47,7 +50,7 @@ app.post('/generate-text', async (req, res) => {
                 { text: prompt }
             ],
             config: {
-                systemInstruction: 'Harus di bls bahasa jawa.'
+                systemInstruction: 'Harus di bls bahasa sunda.'
             }
         });
 
