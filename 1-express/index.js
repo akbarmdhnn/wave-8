@@ -60,13 +60,15 @@ app.post('/generate-text', async (req, res) => {
             message: 'Berhasil dijawab gemini',
             data: aiResponse.text
         });
-    } catch (e) { }
+    } catch (e) {
+        // Semua kode penanganan error HARUS ada di DALAM sini
         console.log(e);
         res.status(500).json({
             success: false,
             message: 'Gagal mendapatkan respon dari Gemini',
-            data: null
+            data: null // Sebaiknya sertakan detail error: e.message
         });
+    }
 });
 
 
